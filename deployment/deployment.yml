@@ -64,7 +64,7 @@ spec:
     spec:
       containers:
       - name: focus
-        image: registry.brotherlogic-backend.com/brotherlogic/focus:0.18.0 # {"$imagepolicy": "flux-system:focus"}
+        image: registry.brotherlogic-backend.com/brotherlogic/focus-display:0.1.0 # {"$imagepolicy": "flux-system:focus"}
         ports:
         - containerPort: 8080
       imagePullSecrets:
