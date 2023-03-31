@@ -5,7 +5,7 @@ FROM golang:1.18 AS build
 WORKDIR $GOPATH/src/github.com/brotherlogic/focus-display
 
 COPY go.mod ./
-COPY go.sum ./
+#COPY go.sum ./
 
 RUN mkdir proto
 #COPY proto/*.go ./proto/
