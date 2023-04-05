@@ -29,7 +29,6 @@ WORKDIR /
 COPY --from=build /focus-display /focus-display
 
 EXPOSE 8080
-EXPOSE 8081
 
 USER nonroot:nonroot
 

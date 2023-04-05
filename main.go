@@ -3,27 +3,24 @@ package main
 import (
 	"html/template"
 	"log"
-	"os"
+	"net/http"
 )
 
 type Focus struct {
 	Focus string
 }
 
-func main() {
+func handle(w http.ResponseWriter, r *http.Request) {
 	focus := &Focus{Focus: "Hello"}
-	t, err := template.ParseFiles("template/focus.tmpl")
+	tmpl, err := template.ParseFiles("template/focus.tmpl")
 	if err != nil {
 		log.Fatalf("Bad Parse: %v", err)
 	}
 
-	f, err := os.Create("index.html")
-	if err != nil {
-		log.Fatalf("create file: %v", err)
-	}
+	tmpl.Execute(w, focus)
+}
 
-	err = t.Execute(f, focus)
-	if err != nil {
-		log.Fatalf("Bad execute: %v", err)
-	}
+func main() {
+	http.HandleFunc("/", handle)
+	http.ListenAndServe(":8080", nil)
 }
